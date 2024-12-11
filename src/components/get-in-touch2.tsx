@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Button from "./button";
 
-export default function GetInTouch() {
+export default function GetInTouch2() {
   return (
     <div className="md:flex">
       <div>
@@ -14,8 +14,8 @@ export default function GetInTouch() {
         />
       </div>
 
-      <div className="container text-body-md space-y-6 md:pt-2 pt-10 lg:pt-20 md:w-[600px]">
-        <p className="font-display text-custom-h2">
+      <div className="container text-body-md space-y-6 md:pt-2 pt-10 lg:pt-24 md:w-[600px]">
+        <p className="font-display text-custom-h3">
           From a studio in London to a global brand with over 400 outlets
         </p>
         <p className="text-body-sm lg:text-body-md">

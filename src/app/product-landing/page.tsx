@@ -5,7 +5,7 @@ import BrandQuality from "@/components/brand-quality";
 import Club from "@/components/club";
 import ProductEmail from "@/components/product-email";
 
-export default function ProductPage() {
+export default function ProductLandingPage() {
   return (
     <div>
       <Navbar2 />

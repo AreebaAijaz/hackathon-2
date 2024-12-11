@@ -1,21 +1,16 @@
-import AboutText from "@/components/page-text";
-import AboutBanner from "@/components/page-banner";
+import AboutBanner from "@/components/abt-banner";
 import BrandQuality from "@/components/brand-quality";
-import Footer from "@/components/footer";
-import GetInTouch from "@/components/get-in-touch";
-import GetInTouch2 from "@/components/get-in-touch2";
+import Club from "@/components/club";
+import GetInTouch from "@/components/get-in-touch2";
 import Navbar3 from "@/components/navbar-3";
-import PageText from "@/components/page-text";
 
-export default function About() {
-  return (
-    <div>
-      <Navbar3 />
-      <PageText />
-      <GetInTouch />
-      <GetInTouch2 />
-      <BrandQuality />
-      <AboutBanner />
-    </div>
-  );
+export default function About(){
+    return(
+        <div>
+        <Navbar3 />
+        <AboutBanner />
+        <BrandQuality />
+        <Club />
+        </div>
+    )
 }

@@ -19,7 +19,7 @@ export default function ProductEmail() {
             type="text"
             placeholder="your@email.com"
           />
-          <button className="bg-dark-primary px-4 py-2 text-body-md text-white">
+          <button className="bg-dark-primary px-4 py-2 h-[56px] w-[118px] text-body-md text-white">
             Sign up
           </button>
         </div>

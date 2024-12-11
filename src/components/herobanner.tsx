@@ -3,7 +3,7 @@ import Button from "./button";
 
 export default function HeroBanner() {
   return (
-    <div className="lg:container lg:flex justify-between h-full lg:h-[584px] w-full lg:w-[1280px] font-satoshi lg:my-14">
+    <div className="lg:container lg:flex justify-between h-full lg:h-[584px] w-full lg:w-[1280px] lg:my-4">
       {/* text */}
       <div className="bg-dark-primary text-white space-y-6 lg:space-y-12 container py-16">
         <div className="font-display text-custom-h2 w-full lg:w-[450px]">
