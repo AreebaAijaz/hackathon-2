@@ -26,6 +26,7 @@ export default function Navbar3() {
         <p className="text-custom-h3 font-display">Avion</p>
         <div className="hidden lg:flex gap-x-10 justify-between items-center">
           <div className="space-x-10 text-body-md text-nav">
+            <Link href="/">Home</Link>
             <Link href="/about">About us</Link>
             <Link href="/product-listing">Contact</Link>
             <Link href="/">Blog</Link>
@@ -64,6 +65,17 @@ export default function Navbar3() {
         <p className="text-custom-h4">Avion</p>
         <div className="flex gap-x-4">
         <Search className="h-[16px] w-[16px]"/>
+        <div className="flex gap-x-4 relative">
+            <div className="relative">
+              <ShoppingCart className="w-[16px] h-[16px]" />
+              <Link
+                href="/shopping-cart"
+                className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center"
+              >
+                2
+              </Link>
+            </div>
+            </div>
         <Sheet>
   <SheetTrigger><IoMenu /></SheetTrigger>
   <SheetContent className="bg-white text-nav">
@@ -71,12 +83,13 @@ export default function Navbar3() {
       <SheetTitle></SheetTitle>
       <SheetDescription>
         <ul className="text-body-lg space-y-4 flex flex-col pt-12">
+        <Link href="/">Home</Link>
         <Link href="/about">About us</Link>
         <Link href="/product-listing">Contact</Link>
         <Link href="/">Blog</Link>
       </ul>
       </SheetDescription>
-    </SheetHeader>
+    </SheetHeader>1f
   </SheetContent>
 </Sheet>
 
