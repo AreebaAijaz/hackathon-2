@@ -41,7 +41,7 @@ export default function HomeNav() {
         <hr className="hidden lg:flex" />
         {/* navbars */}
         <ul className="hidden lg:flex text-body-md gap-x-12 text-nav text-center justify-center  items-center h-[22px] pt-8 text-16 ">
-          <Link href="/product-landing">Plant Pots</Link>
+          <Link href="/">Plant Pots</Link>
           <Link href="/product-listing">Ceramics</Link>
           <Link href="/product-v3">Tables</Link>
           <Link href="about">Chairs</Link>
@@ -65,7 +65,7 @@ export default function HomeNav() {
                 <SheetTitle></SheetTitle>
                 <SheetDescription>
                   <ul className="text-body-lg space-y-4 flex flex-col pt-6">
-                    <Link href="/product-landing">Plant Pots</Link>
+                    <Link href="/">Plant Pots</Link>
                     <Link href="/product-listing">Ceramics</Link>
                     <Link href="/product-v3">Tables</Link>
                     <Link href="/about">Chairs</Link>

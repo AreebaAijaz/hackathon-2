@@ -27,7 +27,7 @@ export default function Navbar2() {
       <div className="container h-[80px] flex justify-between items-center">
         <p className="font-display text-clash-regular">Avion</p>
         <ul className="flex gap-x-8 text-body-md text-nav mr-28">
-        <Link href="/product-landing">Plant Pots</Link>
+        <Link href="/">Plant Pots</Link>
         <Link href="/product-listing">Ceramics</Link>
         <Link href="/product-v3">Tables</Link>
         <Link href="/about">Chairs</Link>
@@ -66,7 +66,7 @@ export default function Navbar2() {
       <SheetTitle></SheetTitle>
       <SheetDescription>
         <ul className="text-body-lg space-y-4 flex flex-col pt-6">
-        <Link href="/product-landing">Plant Pots</Link>
+        <Link href="/">Plant Pots</Link>
         <Link href="/product-listing">Ceramics</Link>
         <Link href="/product-v3">Tables</Link>
         <Link href="/about">Chairs</Link>

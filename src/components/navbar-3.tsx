@@ -26,8 +26,8 @@ export default function Navbar3() {
         <p className="text-custom-h3 font-display">Avion</p>
         <div className="hidden lg:flex gap-x-10 justify-between items-center">
           <div className="space-x-10 text-body-md text-nav">
-            <Link href="/">About us</Link>
-            <Link href="/">Contact</Link>
+            <Link href="/about">About us</Link>
+            <Link href="/product-listing">Contact</Link>
             <Link href="/">Blog</Link>
           </div>
           <div className="flex gap-x-4">
@@ -49,13 +49,13 @@ export default function Navbar3() {
       </div>
       <div>
         <ul className="hidden lg:flex text-nav h-[54px] lg:h-[64px] justify-center items-center gap-x-8 bg-light-grey">
-          <Link href="product-landing">Plant Pots</Link>
-          <Link href="product-landing">Ceramics</Link>
-          <Link href="product-landing">Tables</Link>
-          <Link href="product-landing">Chairs</Link>
-          <Link href="product-landing">Crockery</Link>
-          <Link href="product-landing">Tableware</Link>
-          <Link href="product-landing">Cutlery</Link>
+          <Link href="/">Plant Pots</Link>
+          <Link href="/product-v3">Ceramics</Link>
+          <Link href="/product-listing">Tables</Link>
+          <Link href="/about">Chairs</Link>
+          <Link href="/product-landing">Crockery</Link>
+          <Link href="/product-listing">Tableware</Link>
+          <Link href="/product-v3">Cutlery</Link>
         </ul>
       </div>
     </div>
@@ -73,7 +73,7 @@ export default function Navbar3() {
         <ul className="text-body-lg space-y-4 flex flex-col pt-12">
         <Link href="/about">About us</Link>
         <Link href="/product-listing">Contact</Link>
-        <Link href="/about">Blog</Link>
+        <Link href="/">Blog</Link>
       </ul>
       </SheetDescription>
     </SheetHeader>
