@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container h-[1px] bg-primary w-full mb-6 md:mb-0  lg:mt-7"></div>
+      <div className="container h-[1px] bg-nav w-full mb-6 md:mb-0  lg:mt-7"></div>
 
       {/* Footer Bottom */}
       <div className="container flex justify-center md:justify-between pb-4 md:px-10 lg:px-0 lg:pb-0 md:pt-2 lg:pt-4">

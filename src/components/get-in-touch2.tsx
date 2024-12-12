@@ -3,10 +3,10 @@ import Button from "./button";
 
 export default function GetInTouch2() {
   return (
-    <div className="md:flex">
+    <div className="lg:flex">
       <div>
         <Image
-          className="m-0 lg:mt-10 md:m-0"
+          className="m-0  md:m-0"
           src="/Image (2).png"
           alt=""
           height={603}
@@ -14,7 +14,7 @@ export default function GetInTouch2() {
         />
       </div>
 
-      <div className="container text-body-md space-y-6 md:pt-2 pt-10 lg:pt-24 md:w-[600px]">
+      <div className="container text-body-md space-y-6 md:py-12 pt-10 lg:pt-24 md:w-[600px]">
         <p className="font-display text-custom-h3">
           From a studio in London to a global brand with over 400 outlets
         </p>
@@ -28,7 +28,7 @@ export default function GetInTouch2() {
           breathe and design so our Chelsea boutique become the hotbed for the
           London interior design community
         </p>
-        <div className="text-body-md pt-8 md:py-12 lg:pt-36">
+        <div className="text-body-md py-8 md:py-12 lg:pt-36">
           <Button text="Get in touch" color="bg-light-grey" />
         </div>
       </div>

@@ -32,18 +32,18 @@ export default function PageBanner() {
           <p className="text-custom-h3 font-display">
             Join the club and get the benefits
           </p>
-          <p className="text-body-sm w-[430px] lg:w-[470px] text-center pl-4">
+          <p className="text-body-sm w-[430px] md:w-[380px] lg:w-[470px] text-center pl-4">
             Sign up for our newsletter and receive exclusive offers, new ranges,
             sales, popup stores, and more.
           </p>
-          <ul className="text-body-md flex lg:gap-x-10 justify-between items-center text-center px-3 lg:pl-6">
-            <li className="flex lg:gap-x-3 justify-between items-center">
+          <ul className="text-body-md flex  lg:gap-x-3 justify-between items-center text-center px-4 lg:px-0">
+            <li className="flex lg:gap-x-1 justify-between items-center">
               <FaCircleCheck /> Exclusive offers
             </li>
-            <li className="flex lg:gap-x-3 justify-between items-center">
+            <li className="flex lg:gap-x-1 justify-between items-center">
               <FaCircleCheck /> Free events
             </li>
-            <li className="flex lg:gap-x-3 justify-between items-center">
+            <li className="flex lg:gap-x-1 justify-between items-center">
               <FaCircleCheck /> Large discounts
             </li>
           </ul>
@@ -54,7 +54,7 @@ export default function PageBanner() {
             type="text"
             placeholder="your@email.com"
           />
-          <button className="bg-dark-primary flex items-center justify-between px-4 py-3 text-body-md h-[40px] lg:h-[56px] w-[90px]  lg:w-[118px] text-white">
+          <button className="bg-dark-primary flex items-center justify-center px-4 py-3 text-body-md h-[40px] lg:h-[56px] w-[90px]  lg:w-[118px] text-white">
             Sign up
           </button>
         </div>

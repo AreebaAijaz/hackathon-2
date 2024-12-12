@@ -32,7 +32,17 @@ export default function Navbar3() {
           </div>
           <div className="flex gap-x-4">
             <Search className="h-[16px] w-[16px]" />
-            <ShoppingCart className="h-[16px] w-[16px]" />
+            <div className="flex gap-x-4 relative">
+            <div className="relative">
+              <ShoppingCart className="w-[16px] h-[16px]" />
+              <Link
+                href="/shopping-cart"
+                className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center"
+              >
+                2
+              </Link>
+            </div>
+            </div>
             <CircleUserRound className="h-[16px] w-[16px]" />
           </div>
         </div>
