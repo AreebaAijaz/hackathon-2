@@ -42,12 +42,12 @@ export default function HomeNav() {
         {/* navbars */}
         <ul className="hidden lg:flex text-body-md gap-x-12 text-nav text-center justify-center  items-center h-[22px] pt-8 text-16 ">
           <Link href="/">Plant Pots</Link>
-          <Link href="/product-listing">Ceramics</Link>
+          <Link href="/home2">Ceramics</Link>
           <Link href="/product-v3">Tables</Link>
-          <Link href="about">Chairs</Link>
+          <Link href="/about">Chairs</Link>
           <Link href="/product-landing">Crockery</Link>
           <Link href="/product-listing">Tableware</Link>
-          <Link href="/product-v3">Cutlery</Link>
+          <Link href="/product-listing-2">Cutlery</Link>
         </ul>
       </main>
 
@@ -76,13 +76,13 @@ export default function HomeNav() {
                 <SheetTitle></SheetTitle>
                 <SheetDescription>
                   <ul className="text-body-lg space-y-4 flex flex-col pt-6">
-                    <Link href="/">Plant Pots</Link>
-                    <Link href="/product-listing">Ceramics</Link>
-                    <Link href="/product-v3">Tables</Link>
-                    <Link href="/about">Chairs</Link>
-                    <Link href="/product-landing">Crockery</Link>
-                    <Link href="/product-listing">Tableware</Link>
-                    <Link href="/product-v3">Cutlery</Link>
+                  <Link href="/">Plant Pots</Link>
+          <Link href="/home2">Ceramics</Link>
+          <Link href="/product-v3">Tables</Link>
+          <Link href="/about">Chairs</Link>
+          <Link href="/product-landing">Crockery</Link>
+          <Link href="/product-listing">Tableware</Link>
+          <Link href="/product-listing-2">Cutlery</Link>
                   </ul>
                 </SheetDescription>
               </SheetHeader>

@@ -28,12 +28,12 @@ export default function Navbar2() {
         <p className="font-display text-clash-regular">Avion</p>
         <ul className="flex gap-x-8 text-body-md text-nav mr-28">
         <Link href="/">Plant Pots</Link>
-        <Link href="/product-listing">Ceramics</Link>
-        <Link href="/product-v3">Tables</Link>
-        <Link href="/about">Chairs</Link>
-        <Link href="/product-landing">Crockery</Link>
-        <Link href="/product-listing">Tableware</Link>
-        <Link href="/product-v3">Cutlery</Link>
+          <Link href="/home2">Ceramics</Link>
+          <Link href="/product-v3">Tables</Link>
+          <Link href="/about">Chairs</Link>
+          <Link href="/product-landing">Crockery</Link>
+          <Link href="/product-listing">Tableware</Link>
+          <Link href="/product-listing-2">Cutlery</Link>
         </ul>
         <div className="flex gap-x-4">
           <Search className="h-[16px] w-[16px]" />
@@ -67,12 +67,12 @@ export default function Navbar2() {
       <SheetDescription>
         <ul className="text-body-lg space-y-4 flex flex-col pt-6">
         <Link href="/">Plant Pots</Link>
-        <Link href="/product-listing">Ceramics</Link>
-        <Link href="/product-v3">Tables</Link>
-        <Link href="/about">Chairs</Link>
-        <Link href="/product-landing">Crockery</Link>
-        <Link href="/product-listing">Tableware</Link>
-        <Link href="/product-v3">Cutlery</Link>
+          <Link href="/home2">Ceramics</Link>
+          <Link href="/product-v3">Tables</Link>
+          <Link href="/about">Chairs</Link>
+          <Link href="/product-landing">Crockery</Link>
+          <Link href="/product-listing">Tableware</Link>
+          <Link href="/product-listing-2">Cutlery</Link>
       </ul>
       </SheetDescription>
     </SheetHeader>

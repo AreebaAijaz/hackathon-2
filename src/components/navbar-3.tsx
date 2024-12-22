@@ -29,7 +29,7 @@ export default function Navbar3() {
             <Link href="/">Home</Link>
             <Link href="/about">About us</Link>
             <Link href="/product-listing">Contact</Link>
-            <Link href="/">Blog</Link>
+            <Link href="/home2">Blog</Link>
           </div>
           <div className="flex gap-x-4">
             <Search className="h-[16px] w-[16px]" />
@@ -50,13 +50,13 @@ export default function Navbar3() {
       </div>
       <div>
         <ul className="hidden lg:flex text-nav h-[54px] lg:h-[64px] justify-center items-center gap-x-8 bg-light-grey">
-          <Link href="/">Plant Pots</Link>
-          <Link href="/product-v3">Ceramics</Link>
-          <Link href="/product-listing">Tables</Link>
+        <Link href="/">Plant Pots</Link>
+          <Link href="/home2">Ceramics</Link>
+          <Link href="/product-v3">Tables</Link>
           <Link href="/about">Chairs</Link>
           <Link href="/product-landing">Crockery</Link>
           <Link href="/product-listing">Tableware</Link>
-          <Link href="/product-v3">Cutlery</Link>
+          <Link href="/product-listing-2">Cutlery</Link>
         </ul>
       </div>
     </div>
@@ -86,7 +86,7 @@ export default function Navbar3() {
         <Link href="/">Home</Link>
         <Link href="/about">About us</Link>
         <Link href="/product-listing">Contact</Link>
-        <Link href="/">Blog</Link>
+        <Link href="/home2">Blog</Link>
       </ul>
       </SheetDescription>
     </SheetHeader>1f

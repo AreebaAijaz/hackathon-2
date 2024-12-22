@@ -12,7 +12,7 @@ export default function Home() {
       <HomeNav />
       <HeroBanner />
       <BrandQuality />
-      <Ceramics />
+      <Ceramics HeaderProps="New Ceramics"/>
       <PopularProducts />
       <Club />
       <GetInTouch />
