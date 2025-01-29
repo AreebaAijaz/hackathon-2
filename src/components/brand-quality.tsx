@@ -5,7 +5,7 @@ export default function BrandQuality() {
   return (
     <div className="container my-16 lg:my-10">
       <div>
-        <p className="md:text-center text-custom-h4 font-display ">
+        <p className="md:text-center text-custom-h4 lg:text-custom-h3 lg:pt-4 font-display ">
           What makes our brand different
         </p>
       </div>

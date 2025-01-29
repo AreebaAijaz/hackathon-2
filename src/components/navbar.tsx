@@ -1,3 +1,4 @@
+"use client"
 import { Search, ShoppingCart, CircleUserRound } from "lucide-react";
 import { IoMenu } from "react-icons/io5";
 import Link from "next/link";
@@ -9,8 +10,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store";
 
 export default function HomeNav() {
+  const item = useSelector((state: RootState) => state.cart);
   return (
     <section>
       <main className="hidden lg:block h-[69px] lg:h-[132px] flex-col justify-center items-center px-8">

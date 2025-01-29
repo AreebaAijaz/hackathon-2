@@ -1,3 +1,4 @@
+"use client"
 import { TbTruckDelivery } from "react-icons/tb";
 import { Search, ShoppingCart, CircleUserRound } from "lucide-react";
 import Link from "next/link";
@@ -10,8 +11,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store";
 
 export default function Navbar3() {
+  const item = useSelector((state: RootState) => state.cart);
   return (
     <main>
     <div className="hidden lg:block">

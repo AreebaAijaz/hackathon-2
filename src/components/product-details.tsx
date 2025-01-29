@@ -1,26 +1,6 @@
 import Image from "next/image";
 import Button from "./button";
 
-const Products = [
-  {
-    id: 1,
-    title: "The popular Suede Sofa",
-    price: "£980",
-    Image: "/Large.png",
-  },
-  {
-    id: 2,
-    title: "The Dandy chair",
-    price: "£250",
-    Image: "/Photo.png",
-  },
-  {
-    id: 1,
-    title: "The Dandy Chair",
-    price: "£125",
-    Image: "/Photo (5).png",
-  },
-];
 
 export default function ProductDetails() {
   return (
@@ -87,33 +67,56 @@ export default function ProductDetails() {
         </div>
       </div>
 
-      <div className="container my-20">
-  <p className="text-custom-h2 font-display">You might also love these</p>
-  <div className="flex justify-between items-center gap-x-8 gap-y-4 my-10 ">
-    {Products.map((Item, index) => {
-      return (
-        <div
-          key={Item.id}
-          className={`space-y-1 lg:space-y-3 ${
-            index === 0 ? 'block lg:block hidden' : 'block'
-          }`}
-        >
-          <Image
-            src={Item.Image}
-            alt=""
-            height={375}
-            width={index === 0 ? 630 : 305}
-          />
-          <p className="font-display text-custom-h4">{Item.title}</p>
-          <p className="text-body-lg">{Item.price}</p>
-        </div>
-      );
-    })}
-  </div>
-  <div className="text-center text-body-md">
-    <Button text="See Collection" color="bg-light-grey" />
-  </div>
-</div>
     </main>
   );
 }
+
+
+// const Products = [
+//   {
+//     id: 1,
+//     title: "The popular Suede Sofa",
+//     price: "£980",
+//     Image: "/Large.png",
+//   },
+//   {
+//     id: 2,
+//     title: "The Dandy chair",
+//     price: "£250",
+//     Image: "/Photo.png",
+//   },
+//   {
+//     id: 1,
+//     title: "The Dandy Chair",
+//     price: "£125",
+//     Image: "/Photo (5).png",
+//   },
+// ];
+
+{/* <div className="container my-20">
+<p className="text-custom-h2 font-display">You might also love these</p>
+<div className="flex justify-between items-center gap-x-8 gap-y-4 my-10 ">
+  {Products.map((Item, index) => {
+    return (
+      <div
+        key={Item.id}
+        className={`space-y-1 lg:space-y-3 ${
+          index === 0 ? 'block lg:block hidden' : 'block'
+        }`}
+      >
+        <Image
+          src={Item.Image}
+          alt=""
+          height={375}
+          width={index === 0 ? 630 : 305}
+        />
+        <p className="font-display text-custom-h4">{Item.title}</p>
+        <p className="text-body-lg">{Item.price}</p>
+      </div>
+    );
+  })}
+</div>
+<div className="text-center text-body-md">
+  <Button text="See Collection" color="bg-light-grey" />
+</div>
+</div> */}
