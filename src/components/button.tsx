@@ -3,7 +3,7 @@ import { BiColor } from "react-icons/bi";
 interface Iprops {
   text: string;
   color: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;  // Accepts event parameter
 }
 
 export default function Button({ text, color , onClick}: Iprops) {

@@ -1,197 +1,120 @@
 
-// "use client"
-// import { useSelector, useDispatch } from "react-redux";
-// import { RootState } from "@/app/redux/store"; // Update this to your actual store path
-// import { remove, increment, decrement } from "@/app/redux/cart-slice";
-// import Button from "@/components/button";
-// import HomeNav from "@/components/navbar";
-// import Image from "next/image";
-// import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
-
-// export default function ShoppingCart() {
-//   const cart = useSelector((state: RootState) => state.cart); // Access cart from Redux store
-//   const dispatch = useDispatch();
-
-//   // Calculate the subtotal
-//   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
-//   if (!cart.length) {
-//     return (
-//       <main>
-//         <div>
-//           <HomeNav />
-//         </div>
-//         <div className="lg:h-full bg-light-grey flex items-center justify-center">
-//           <p className="text-custom-h4 font-display py-6">Your cart is empty.</p>
-//         </div>
-//       </main>
-//     );
-//   }
-
-//   return (
-//     <main>
-//       <div>
-//         <HomeNav />
-//       </div>
-//       <div className="lg:h-[749px] bg-light-grey">
-//         <div className="container lg:px-28">
-//           <div className="py-8 lg:py-14">
-//             <p className="font-display text-custom-h3 lg:text-custom-h1">Your Shopping Cart</p>
-//           </div>
-//           {/* headings */}
-//           <div className="hidden lg:flex justify-between font-display text-custom-h5 pb-3">
-//             <p>Product</p>
-//             <p className="pl-64">Quantity</p>
-//             <p>Total</p>
-//           </div>
-//           <hr />
-//           {/* product-description */}
-//           <div className="py-5 space-y-3">
-//             {cart.map((item) => (
-//               <div key={item.id} className="flex justify-between items-center">
-//                 <div className="flex gap-x-4">
-//                   <Image src={item.image} alt={item.title} height={50} width={100} />
-//                   <div className="lg:py-4 lg:space-y-1">
-//                     <p className="font-display text-custom-h6 lg:text-custom-h4">{item.title}</p>
-//                     <p className="text-body-md">£{item.price}</p>
-//                   </div>
-//                 </div>
-//                 <div className="flex items-center gap-x-4">
-//                   <FaMinusCircle
-//                     onClick={() => {
-//                       if (item.quantity === 1) {
-//                         dispatch(remove(item.id)); // Remove the item if quantity is 1
-//                       } else {
-//                         dispatch(decrement(item.id)); // Decrement otherwise
-//                       }
-//                     }}
-//                     className="cursor-pointer text-gray-500 hover:text-gray-700"
-//                   />
-//                   <span>{item.quantity}</span>
-//                   <FaPlusCircle
-//                     onClick={() => dispatch(increment(item.id))}
-//                     className="cursor-pointer text-gray-500 hover:text-gray-700"
-//                   />
-//                 </div>
-//                 <div>
-//                   <p className="hidden lg:block lg:text-body-lg">
-//                     £{(item.price * item.quantity).toFixed(2)}
-//                   </p>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//           <hr />
-//           <div className="text-end py-4 lg:py-10 space-y-2">
-//             <p className="text-custom-h4">
-//               Subtotal <span className="font-display text-custom-h3 pl-3">£{subtotal.toFixed(2)}</span>
-//             </p>
-//             <p className="text-body-sm">Taxes and shipping are calculated at checkout</p>
-//             <div className="text-white">
-//               <Button text="go to checkout" color="bg-dark-primary" />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </main>
-//   );
-// }
 
 
 "use client";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "@/app/redux/store"; // Update this to your actual store path
-import { remove, increment, decrement } from "@/app/redux/cart-slice";
 import Button from "@/components/button";
 import HomeNav from "@/components/navbar";
 import Image from "next/image";
-import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { getCartItems, removeFromCart, updateCartQuantity } from "../actions/actions";
+import Swal from "sweetalert2";
+import { Product } from "@/types/product";
+import { urlFor } from "@/sanity/lib/image";
 
 export default function ShoppingCart() {
-  const cart = useSelector((state: RootState) => state.cart); // Access cart from Redux store
-  const dispatch = useDispatch();
+    const [cartItems, setCartItems] = useState<Product[]>([]);
 
-  // Calculate the subtotal
-  const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    useEffect(() => {
+        setCartItems(getCartItems());
+    }, []);
 
-  if (!cart.length) {
+    const handleRemoveFromCart = (productId: string) => {
+        removeFromCart(productId);
+        setCartItems(getCartItems());
+        Swal.fire({
+            position: "center",
+            title: "Item removed from cart",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    };
+
+    const handleQuantityChange = (productId: string, quantity: number) => {
+        updateCartQuantity(productId, quantity);
+        setCartItems(getCartItems());
+    };
+
+    const handleIncrement = (productId: string) => {
+        const product = cartItems.find((item) => item._id === productId);
+        if (product) {
+            handleQuantityChange(productId, product.quantity + 1);
+        }
+    };
+
+    const handleDecrement = (productId: string) => {
+        const product = cartItems.find((item) => item._id === productId);
+        if (product && product.quantity > 1) {
+            handleQuantityChange(productId, product.quantity - 1);
+        }
+    };
+
+    const calculatedTotal = () => {
+        return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    };
+
     return (
-      <main>
-        <div>
-          <HomeNav />
-        </div>
-        <div className="lg:h-full bg-light-grey flex items-center justify-center">
-          <p className="text-custom-h4 font-display py-6">Your cart is empty.</p>
-        </div>
-      </main>
-    );
-  }
+        <main>
+            <HomeNav />
+            <div className="bg-light-grey">
+                {cartItems.length === 0 ? (
+                    <div className="text-center py-10">
+                        <p className="font-display text-custom-h4">No items in the cart</p>
+                    </div>
+                ) : (
+                    <div className="container lg:px-28">
+                        <div className="py-8 lg:py-14">
+                            <p className="font-display text-custom-h3 lg:text-custom-h1">Your Shopping Cart</p>
+                        </div>
+                        {/* headings */}
+                        <div className="hidden lg:flex justify-between font-display text-custom-h5 pb-3">
+                            <p>Product</p>
+                            <p className="">Quantity</p>
+                            <p className="">Total</p>
+                        </div>
+                        <hr />
+                        {/* product-description */}
+                        <div className="py-5 space-y-3">
+                            {cartItems.map((item) => (
+                                <div key={item._id} className="flex justify-between items-center">
+                                    <div className="flex gap-x-4">
+                                        {item.image?.asset?._ref ? (
+                                            <Image
+                                                src={urlFor(item.image.asset._ref).url()}
+                                                alt="Product Image"
+                                                width={70}
+                                                height={40}
+                                                className="object-contain"
+                                            />
+                                        ) : (
+                                            <p>No image available</p>
+                                        )}
+                                        <div className="lg:py-4 lg:space-y-1">
+                                            <p className="font-display text-custom-h6 lg:text-custom-h4 md:w-56">{item.productName}</p>
+                                            <p className="text-body-md">£{item.price}</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-x-2 p-0 md:pl-24">
+                                        <button onClick={() => handleDecrement(item._id)} className="px-2 bg-gray-300 rounded">-</button>
+                                        <p className="text-body-md">{item.quantity}</p>
+                                        <button onClick={() => handleIncrement(item._id)} className="px-2 bg-gray-300 rounded">+</button>
+                                    </div>
+                                    <button onClick={() => handleRemoveFromCart(item._id)} className="text-red-500">Remove</button>
+                                    <p className="hidden lg:block lg:text-body-lg p-0 md:pl-44">£{item.price * item.quantity}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <hr />
+                        <div className="text-end py-4 lg:py-10 space-y-2">
+                            <p className="text-custom-h4">Subtotal <span className="font-display text-custom-h3 pl-3">£{calculatedTotal()}</span></p>
+                            <p className="text-body-sm">Taxes and shipping are calculated at checkout</p>
+                            <div className="text-white">
+                                <Button text="Go to checkout" color="bg-dark-primary" />
+                            </div>
+                        </div>
+                    </div>
+                )}
 
-  return (
-    <main>
-      <div>
-        <HomeNav />
-      </div>
-      <div className="lg:h-[749px] bg-light-grey">
-        <div className="container lg:px-28">
-          <div className="py-8 lg:py-14">
-            <p className="font-display text-custom-h3 lg:text-custom-h1">Your Shopping Cart</p>
-          </div>
-          {/* headings */}
-          <div className="hidden lg:flex justify-between font-display text-custom-h5 pb-3">
-            <p>Product</p>
-            <p className="pl-64">Quantity</p>
-            <p>Total</p>
-          </div>
-          <hr />
-          {/* product-description */}
-          <div className="py-5 space-y-3">
-            {cart.map((item) => (
-              <div key={item.id} className="flex justify-between items-center">
-                <div className="flex gap-x-4">
-                  <Image src={item.image} alt={item.title} height={50} width={100} />
-                  <div className="lg:py-4 lg:space-y-1">
-                    <p className="font-display text-custom-h6 lg:text-custom-h4">{item.title}</p>
-                    <p className="text-body-md">£{item.price}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-x-4">
-                  <FaMinusCircle
-                    onClick={() => {
-                      if (item.quantity === 1) {
-                        dispatch(remove(item.id)); // Remove the item if quantity is 1
-                      } else {
-                        dispatch(decrement(item.id)); // Decrement otherwise
-                      }
-                    }}
-                    className="cursor-pointer text-gray-500 hover:text-gray-700"
-                  />
-                  <span>{item.quantity}</span>
-                  <FaPlusCircle
-                    onClick={() => dispatch(increment(item.id))}
-                    className="cursor-pointer text-gray-500 hover:text-gray-700"
-                  />
-                </div>
-                <div>
-                  <p className="hidden lg:block lg:text-body-lg">
-                    £{(item.price * item.quantity).toFixed(2)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <hr />
-          <div className="text-end py-4 lg:py-10 space-y-2">
-            <p className="text-custom-h4">
-              Subtotal <span className="font-display text-custom-h3 pl-3">£{subtotal.toFixed(2)}</span>
-            </p>
-            <p className="text-body-sm">Taxes and shipping are calculated at checkout</p>
-            <div className="text-white">
-              <Button text="go to checkout" color="bg-dark-primary" />
             </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
+        </main>
+    );
 }

@@ -10,11 +10,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/redux/store";
+import { getCartItems } from "@/app/actions/actions";
+import { useEffect, useState } from "react";
 
 export default function HomeNav() {
-  const item = useSelector((state: RootState) => state.cart);
+  const [cartQuantity, setCartQuantity] = useState(0);
+
+  useEffect(() => {
+    const cartItems = getCartItems();
+    const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+    setCartQuantity(totalQuantity);
+  }, []);
+
   return (
     <section>
       <main className="hidden lg:block h-[69px] lg:h-[132px] flex-col justify-center items-center px-8">
@@ -24,18 +31,17 @@ export default function HomeNav() {
             <Search className="w-[16px] h-[16px]" />
           </div>
           <div className="text-custom-h3 font-display ">Avion</div>
-          {/* <div className="flex gap-x-4">
-          <ShoppingCart className="w-[16px] h-[16px]" />
-          <CircleUserRound className="w-[16px] h-[16px]" />
-        </div> */}
           <div className="flex gap-x-4 relative">
             <div className="relative">
-              <ShoppingCart className="w-[16px] h-[16px]" />
-              <Link
-                href="/shopping-cart"
-                className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center"
-              >
-                2
+              <Link href="/shopping-cart">
+                <div className="relative">
+                  <ShoppingCart className="w-[16px] h-[16px]" />
+                  {cartQuantity > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                      {cartQuantity}
+                    </span>
+                  )}
+                </div>
               </Link>
             </div>
             <CircleUserRound className="w-[16px] h-[16px]" />
@@ -65,12 +71,16 @@ export default function HomeNav() {
               <ShoppingCart className="w-[16px] h-[16px]" />
               <Link
                 href="/shopping-cart"
-                className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center"
               >
-                2
+                {cartQuantity > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                    {cartQuantity}
+                  </span>
+                )}
+
               </Link>
             </div>
-            </div>
+          </div>
           <Sheet>
             <SheetTrigger>
               <IoMenu />
@@ -80,13 +90,13 @@ export default function HomeNav() {
                 <SheetTitle></SheetTitle>
                 <SheetDescription>
                   <ul className="text-body-lg space-y-4 flex flex-col pt-6">
-                  <Link href="/">Plant Pots</Link>
-          <Link href="/home2">Ceramics</Link>
-          <Link href="/product-v3">Tables</Link>
-          <Link href="/about">Chairs</Link>
-          <Link href="/product-landing">Crockery</Link>
-          <Link href="/product-listing">Tableware</Link>
-          <Link href="/product-listing-2">Cutlery</Link>
+                    <Link href="/">Plant Pots</Link>
+                    <Link href="/home2">Ceramics</Link>
+                    <Link href="/product-v3">Tables</Link>
+                    <Link href="/about">Chairs</Link>
+                    <Link href="/product-landing">Crockery</Link>
+                    <Link href="/product-listing">Tableware</Link>
+                    <Link href="/product-listing-2">Cutlery</Link>
                   </ul>
                 </SheetDescription>
               </SheetHeader>

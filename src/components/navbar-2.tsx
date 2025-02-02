@@ -12,12 +12,19 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/redux/store";
+import { getCartItems } from "@/app/actions/actions";
+import { useEffect, useState } from "react";
 
 
 export default function Navbar2() {
-  const item = useSelector((state: RootState) => state.cart);
+      const [cartQuantity, setCartQuantity] = useState(0);
+    
+      useEffect(() => {
+        const cartItems = getCartItems();
+        const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+        setCartQuantity(totalQuantity);
+      }, []);
+
   return (
     <main>
     <div className="hidden lg:block">
@@ -42,15 +49,18 @@ export default function Navbar2() {
         <div className="flex gap-x-4">
           <Search className="h-[16px] w-[16px]" />
           <div className="flex gap-x-4 relative">
-            <div className="relative">
-              <ShoppingCart className="w-[16px] h-[16px]" />
-              <Link
-                href="/shopping-cart"
-                className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center"
-              >
-                2
-              </Link>
-            </div>
+          <div className="relative">
+                <Link href="/shopping-cart">
+                  <div className="relative">
+                    <ShoppingCart className="w-[16px] h-[16px]" />
+                    {cartQuantity > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                        {cartQuantity}
+                      </span>
+                    )}
+                  </div>
+                </Link>
+              </div>
             </div>
           <CircleUserRound className="h-[16px] w-[16px]" />
         </div>
@@ -61,7 +71,19 @@ export default function Navbar2() {
         <p className="text-custom-h4">Avion</p>
         <div className="flex gap-x-4">
         <Search className="h-[16px] w-[16px]"/>
-        <ShoppingCart className="h-[16px] w-[16px]" />
+        <div className="relative">
+              <ShoppingCart className="w-[16px] h-[16px]" />
+              <Link
+                href="/shopping-cart"
+              >
+                {cartQuantity > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                    {cartQuantity}
+                  </span>
+                )}
+
+              </Link>
+            </div>        
         <CircleUserRound className="h-[16px] w-[16px]"/>
         <Sheet>
   <SheetTrigger><IoMenu /></SheetTrigger>
