@@ -16,7 +16,7 @@ const client = createClient({
     token: process.env.SANITY_API_TOKEN,
     apiVersion: '2021-08-31'
 });
-
+console.log(token);
 async function uploadImageToSanity(imageUrl) {
     try {
         console.log(`Uploading image: ${imageUrl}`);

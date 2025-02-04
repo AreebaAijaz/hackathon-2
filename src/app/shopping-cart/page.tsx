@@ -10,10 +10,12 @@ import { getCartItems, removeFromCart, updateCartQuantity } from "../actions/act
 import Swal from "sweetalert2";
 import { Product } from "@/types/product";
 import { urlFor } from "@/sanity/lib/image";
+import { useRouter } from "next/navigation";
 
 export default function ShoppingCart() {
     const [cartItems, setCartItems] = useState<Product[]>([]);
 
+    const router = useRouter();
     useEffect(() => {
         setCartItems(getCartItems());
     }, []);
@@ -52,6 +54,10 @@ export default function ShoppingCart() {
         return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     };
 
+    const handleProceed = () => {
+        router.push("/checkout");
+    }
+
     return (
         <main>
             <HomeNav />
@@ -62,7 +68,7 @@ export default function ShoppingCart() {
                     </div>
                 ) : (
                     <div className="container lg:px-28">
-                        <div className="py-8 lg:py-14">
+                        <div className="py-8 lg:py-10">
                             <p className="font-display text-custom-h3 lg:text-custom-h1">Your Shopping Cart</p>
                         </div>
                         {/* headings */}
@@ -74,7 +80,9 @@ export default function ShoppingCart() {
                         <hr />
                         {/* product-description */}
                         <div className="py-5 space-y-3">
-                            {cartItems.map((item) => (
+                            {cartItems.map((item) => {
+                                 console.log("Cart Item Image Reference:", item.image?.asset?._ref); // Debugging log
+                                return(
                                 <div key={item._id} className="flex justify-between items-center">
                                     <div className="flex gap-x-4">
                                         {item.image?.asset?._ref ? (
@@ -88,6 +96,7 @@ export default function ShoppingCart() {
                                         ) : (
                                             <p>No image available</p>
                                         )}
+
                                         <div className="lg:py-4 lg:space-y-1">
                                             <p className="font-display text-custom-h6 lg:text-custom-h4 md:w-56">{item.productName}</p>
                                             <p className="text-body-md">£{item.price}</p>
@@ -101,14 +110,14 @@ export default function ShoppingCart() {
                                     <button onClick={() => handleRemoveFromCart(item._id)} className="text-red-500">Remove</button>
                                     <p className="hidden lg:block lg:text-body-lg p-0 md:pl-44">£{item.price * item.quantity}</p>
                                 </div>
-                            ))}
+                            )})}
                         </div>
                         <hr />
                         <div className="text-end py-4 lg:py-10 space-y-2">
                             <p className="text-custom-h4">Subtotal <span className="font-display text-custom-h3 pl-3">£{calculatedTotal()}</span></p>
                             <p className="text-body-sm">Taxes and shipping are calculated at checkout</p>
                             <div className="text-white">
-                                <Button text="Go to checkout" color="bg-dark-primary" />
+                                <Button text="Go to checkout" color="bg-dark-primary" onClick={handleProceed}/>
                             </div>
                         </div>
                     </div>
@@ -118,3 +127,5 @@ export default function ShoppingCart() {
         </main>
     );
 }
+
+
