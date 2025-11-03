@@ -16,7 +16,7 @@ export default function ChatBot() {
     import('@n8n/chat').then(({ createChat }) => {
       createChat({
         // Replace with your actual webhook URL from n8n
-        webhookUrl: 'http://localhost:5678/webhook/85c66462-4128-49d3-a1bb-9a51955eadf8/chat',
+        webhookUrl: process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL,
         
         // Chat will appear as a floating button
         mode: 'window',
